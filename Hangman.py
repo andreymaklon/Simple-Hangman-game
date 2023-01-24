@@ -1,3 +1,5 @@
+
+# Generates a new word at the start of the program and when the player chooses to try again.
 def new_word():
     import random
     words = ['dog', 'cat', 'book', 'car', 'pen', 'table', 'chair', 'house', 'computer', 'phone', 
@@ -12,7 +14,7 @@ def new_word():
     print(f'\033[36mYour word has {len(selected_word)} letters \033[m')
     return listed_word, selected_word, word_len
 
-
+# Checks if the user guessed the word correctly or if the letter is in the selected_word
 def guess_word(word, guess):
     global listed_word
 
@@ -33,7 +35,7 @@ def guess_word(word, guess):
         else:
             print(f"\033[31mThe letter {guess} isn't in the word!\033[m")
 
-
+# Checks if the 'revealed word' is the same as shown on the screen, return True if it is.
 def word_check(w1, w2):
     word2 = []
     for i in w2:
@@ -44,7 +46,7 @@ def word_check(w1, w2):
     else:
         return False
 
-
+# Asks the player if he wants to play again, returns True if so.
 def play_again():
     while True:
         p_a = input('\033[37mDo you want to play again? Y/N: \033[m')
@@ -56,6 +58,7 @@ def play_again():
         else:
             return False
 
+# Asks the player on what difficulty he wants to play
 def difficulty():
     while True:
         difficulty = input('\033[32mWhich difficulty you want to play? [E]asy / [M]edium / [H]ard: \033[m')[0]
@@ -65,6 +68,7 @@ def difficulty():
 
             return difficulty
 
+# Calls the difficulty def and assigns it to chances, then checks what value chances received
 def tries():
     chances = difficulty()
     if chances in 'Hh':
@@ -76,12 +80,10 @@ def tries():
     return tries
 
 
-
-# add color, fix (rpgduster)
-# also try to change word > letter depending on what the user types
-
+# Prints the name of the game
 print('\033[33m----Hangman----\033[m')
 
+# Loop of the game
 while True:
     win = False
     chances = tries() + 1
@@ -100,6 +102,8 @@ while True:
             break
         win = word_check(listed_word, selected_word)
     print(guessed_word := ''.join(listed_word).center(30).upper())
+    
+    # Calls the fuction play_again to check if the player wants to play again
     p_again = play_again()
     print()
     if not p_again:
