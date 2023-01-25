@@ -33,7 +33,10 @@ def guess_word(word, guess):
                     listed_word.insert(i, w)
                     listed_word.pop(i+1)
         else:
-            print(f"\033[31mThe letter {guess} isn't in the word!\033[m")
+            if len(guess) > 1:
+                print(f"\033[31m{guess.upper()} isn't the correct word!\033[m")
+            else:
+                print(f"\033[31mThe letter {guess.upper()} isn't in the word!\033[m")
 
 # Checks if the 'revealed word' is the same as shown on the screen, return True if it is.
 def word_check(w1, w2):
@@ -102,7 +105,7 @@ while True:
             break
         win = word_check(listed_word, selected_word)
     print(guessed_word := ''.join(listed_word).center(30).upper())
-    
+
     # Calls the fuction play_again to check if the player wants to play again
     p_again = play_again()
     print()
