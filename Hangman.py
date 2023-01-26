@@ -86,7 +86,7 @@ def tries():
 # Prints the name of the game
 print('\033[33m----Hangman----\033[m')
 
-# Loop of the game
+# Game loop
 while True:
     win = False
     chances = tries() + 1
