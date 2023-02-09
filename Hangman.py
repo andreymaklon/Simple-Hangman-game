@@ -82,7 +82,6 @@ def tries():
         tries = 15
     return tries
 
-
 # Prints the name of the game
 print('\033[33m----Hangman----\033[m')
 
@@ -114,4 +113,3 @@ while True:
     else:
         win = False
 print('\033[36mSee you next time.')
-
